@@ -1,10 +1,13 @@
 "use client";
 import React from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
 import { signUpWithEmail } from "@/helper/auth";
+
+import SudemyLogo from "@/public/logo/logo.png";
 
 const page = () => {
     const router = useRouter();
@@ -53,7 +56,7 @@ const page = () => {
                                     className="flex items-center rounded-lg lg:w-6/12  lg:rounded-br-none lg:rounded-tr-none"
                                     style={{
                                         background:
-                                            "linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593)",
+                                            "linear-gradient(to right, #0096c7, #0077b6, #023e8a, #03045e)",
                                     }}
                                 >
                                     <div className="px-4 py-6 text-white md:mx-6 md:p-12">
@@ -75,10 +78,11 @@ const page = () => {
                                 <div className="px-4 md:px-0 lg:w-6/12">
                                     <div className="md:mx-6 md:p-12">
                                         <div className="text-center">
-                                            <img
-                                                className="mx-auto w-48"
-                                                src="https://tecdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/lotus.webp"
+                                            <Image
+                                                className="mx-auto"
+                                                src={SudemyLogo}
                                                 alt="logo"
+                                                width={150}
                                             />
                                         </div>
 
@@ -94,11 +98,13 @@ const page = () => {
                                                 <input
                                                     type="text"
                                                     name="fullname"
-                                                    className="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[twe-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-white dark:placeholder:text-neutral-300 dark:autofill:shadow-autofill dark:peer-focus:text-primary [&:not([data-twe-input-placeholder-active])]:placeholder:opacity-0"
+                                                    className="peer block min-h-[auto] w-full rounded border border-2-black  bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[twe-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-white dark:placeholder:text-neutral-300 dark:autofill:shadow-autofill dark:peer-focus:text-primary [&:not([data-twe-input-placeholder-active])]:placeholder:opacity-0"
                                                     id="exampleFormControlInput1"
                                                     placeholder="Full Name"
                                                     value={userData.fullname}
-                                                    onChange={(e) => handleChange(e)}
+                                                    onChange={(e) =>
+                                                        handleChange(e)
+                                                    }
                                                 />
                                                 <label
                                                     htmlFor="exampleFormControlInput1"
@@ -115,7 +121,7 @@ const page = () => {
                                                 <input
                                                     type="text"
                                                     name="email"
-                                                    className="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[twe-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-white dark:placeholder:text-neutral-300 dark:autofill:shadow-autofill dark:peer-focus:text-primary [&:not([data-twe-input-placeholder-active])]:placeholder:opacity-0"
+                                                    className="peer block min-h-[auto] w-full rounded border border-2-black bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[twe-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-white dark:placeholder:text-neutral-300 dark:autofill:shadow-autofill dark:peer-focus:text-primary [&:not([data-twe-input-placeholder-active])]:placeholder:opacity-0"
                                                     id="exampleFormControlInput2"
                                                     placeholder="Email"
                                                     value={userData.email}
@@ -136,7 +142,7 @@ const page = () => {
                                                 <input
                                                     type="password"
                                                     name="password"
-                                                    className="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[twe-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-white dark:placeholder:text-neutral-300 dark:autofill:shadow-autofill dark:peer-focus:text-primary [&:not([data-twe-input-placeholder-active])]:placeholder:opacity-0"
+                                                    className="peer block min-h-[auto] w-full rounded border border-2-black      bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[twe-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-white dark:placeholder:text-neutral-300 dark:autofill:shadow-autofill dark:peer-focus:text-primary [&:not([data-twe-input-placeholder-active])]:placeholder:opacity-0"
                                                     id="exampleFormControlInput3"
                                                     placeholder="Password"
                                                     value={userData.password}
@@ -155,13 +161,12 @@ const page = () => {
                                                     className="mb-3 inline-block w-full rounded px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-dark-3 transition duration-150 ease-in-out hover:shadow-dark-2 focus:shadow-dark-2 focus:outline-none focus:ring-0 active:shadow-dark-2 dark:shadow-black/30 dark:hover:shadow-dark-strong dark:focus:shadow-dark-strong dark:active:shadow-dark-strong"
                                                     style={{
                                                         background:
-                                                            "linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593)",
+                                                            "linear-gradient(to right, #0096c7, #0077b6, #023e8a, #03045e)",
                                                     }}
                                                     onClick={handleSignUp}
                                                 >
                                                     Sign Up
                                                 </button>
-
                                             </div>
 
                                             <div className="flex items-center justify-between pb-6">

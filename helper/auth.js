@@ -1,5 +1,5 @@
 import { signInWithEmailAndPassword, createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
-import { collection, addDoc } from 'firebase/firestore';
+import { collection, addDoc, getDocs, query, where } from 'firebase/firestore';
 import { auth, db } from "@/config/firebaseConfig.js";
 
 export const signUpWithEmail = async (email, password, fullName) => {
@@ -37,14 +37,21 @@ export const signInWithGoogle = async () => {
         const provider = new GoogleAuthProvider();
 
         const userCredential = await signInWithPopup(auth, provider);
-
         const user = userCredential.user;
 
-        await addDoc(collection(db, 'users'), {
-            fullName: user.displayName,
-            email: user.email,
-            uid: user.uid
-        });
+        const usersRef = collection(db, 'users');
+        const q = query(usersRef, where('uid', '==', user.uid));
+        const querySnapshot = await getDocs(q);
+
+        if (querySnapshot.empty) {
+            await addDoc(usersRef, {
+                fullName: user.displayName,
+                email: user.email,
+                uid: user.uid
+            });
+        } else {
+            console.log('User already exists in Firestore.');
+        }
 
         return { success: true, user };
     } catch (error) {
